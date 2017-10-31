@@ -1,3 +1,13 @@
+oyooyo's fork of LuaMinify
+--------------------------
+
+This is my fork of [stravant](http://github.com/stravant)'s [LuaMinify](http://github.com/stravant/LuaMinify).
+It is identical to the original LuaMinify, but includes a few open pull requests that I consider very useful, but that have not been merged for years (stravant no longer seems to actively maintain LuaMinify):
+
+- [#17: fix import on case-sensitive filesystems](https://github.com/stravant/LuaMinify/pull/17)
+- [#16: Significantly more efficient local variable naming](https://github.com/stravant/LuaMinify/pull/16)
+- [#12: allow running from outside of the script dir](https://github.com/stravant/LuaMinify/pull/12)
+
 Lua Parsing and Refactorization tools
 =========
 

@@ -1,10 +1,11 @@
-
 --
 -- beautify.interactive
 --
 -- For testing: Lets you enter lines of text to be beautified to verify the 
 -- correctness of their implementation.
 --
+
+package.path = package.path .. ';' .. string.gsub(arg[0], '(.*[/\\]).*', '%1') .. '?.lua'
 
 local util = require'Util'
 local Parser = require'ParseLua'
