@@ -1,45 +1,25 @@
-local blacklist = {
+local blacklisted = {
+	["and"] = true,
+	["arg"] = true,
 	["do"] = true,
+	["end"] = true,
+	["for"] = true,
 	["if"] = true,
 	["in"] = true,
-	["or"] = true,
-	["for"] = true,
-	["and"] = true,
+	["nil"] = true,
 	["not"] = true,
-	["end"] = true,
-	["nil"] = true
+	["or"] = true,
 }
 
-local insert, char = table.insert, string.char
-
-local chars = {}
-for i = 97, 122 do
-	insert(chars, char(i))
-end
-for i = 65, 90 do
-	insert(chars, char(i))
-end
+local chars = {''}
+string.gsub('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', '.', function(c) chars[#chars + 1] = c end)
 
 local function GetUnique(self)
-	for x = 1, 52 do
-		local c = chars[x]
-		if not blacklist[c] and not self:GetVariable(c) then
-			return c
-		end
-	end
-	for x = 1, 52 do
-		for y = 1, 52 do
-			local c = chars[x]..chars[y]
-			if not blacklist[c] and not self:GetVariable(c) then
-				return c
-			end
-		end
-	end
-	for x = 1, 52 do
-		for y = 1, 52 do
-			for z = 1, 52 do
+	for x = 1, #chars do
+		for y = 1, #chars do
+			for z = 2, #chars do
 				local c = chars[x]..chars[y]..chars[z]
-				if not blacklist[c] and not self:GetVariable(c) then
+				if not blacklisted[c] and not self:GetVariable(c) then
 					return c
 				end
 			end
