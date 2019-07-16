@@ -187,6 +187,7 @@ local function LexLua(src)
 					leadingWhite = ""
 					table.insert(leading, token)
 				end
+				local c = peek()
 				if c == ' ' or c == '\t' then
 					--whitespace
 					--leadingWhite = leadingWhite..get()
