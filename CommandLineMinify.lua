@@ -94,19 +94,19 @@ elseif #arg == 2 then
 		return
 	end
 	--
-	if arg[1] == arg[2] then
-		print("Are you SURE you want to overwrite the source file with a minified version?\n"..
-		      "You will be UNABLE to get the original source back!")
-		while true do
-			io.write("Confirm (yes/cancel): ")
-			local msg = io.read('*line')
-			if msg == 'yes' then
-				break
-			elseif msg == 'cancel' then
-				return
-			end
-		end		
-	end
+	-- if arg[1] == arg[2] then
+	-- 	print("Are you SURE you want to overwrite the source file with a minified version?\n"..
+	-- 	      "You will be UNABLE to get the original source back!")
+	-- 	while true do
+	-- 		io.write("Confirm (yes/cancel): ")
+	-- 		local msg = io.read('*line')
+	-- 		if msg == 'yes' then
+	-- 			break
+	-- 		elseif msg == 'cancel' then
+	-- 			return
+	-- 		end
+	-- 	end
+	-- end
 	local outf = io.open(arg[2], 'w')
 	if not outf then
 		print("Failed to open `"..arg[2].."` for writing")
