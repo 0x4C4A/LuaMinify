@@ -174,6 +174,7 @@ local function LexLua(src)
 					while peek() ~= '\n' and peek() ~= '' do
 						leadingWhite = leadingWhite .. get()
 					end
+					leadingWhite = leadingWhite .. "\n"
 					local token = {
 						Type = 'Comment',
 						CommentType = 'Shebang',
@@ -186,9 +187,7 @@ local function LexLua(src)
 					end
 					leadingWhite = ""
 					table.insert(leading, token)
-				end
-				local c = peek()
-				if c == ' ' or c == '\t' then
+				elseif c == ' ' or c == '\t' then
 					--whitespace
 					--leadingWhite = leadingWhite..get()
 					local c2 = get() -- ignore whitespace

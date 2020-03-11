@@ -71,6 +71,15 @@ local function Format_Mini(ast)
 		local currentPrecedence = 0
 		local skipParens = false
 		local out = ""
+
+		if expr.Tokens[1] and expr.Tokens[1].LeadingWhite then
+			for k, v in pairs(expr.Tokens[1].LeadingWhite) do
+				if v.Type == "Comment" and v.CommentType == "Shebang" then
+					out = out..v.Data
+				end
+			end
+		end
+
 		if expr.AstType == 'VarExpr' then
 			if expr.Variable then
 				out = out..expr.Variable.Name
@@ -190,6 +199,15 @@ local function Format_Mini(ast)
 
 	local formatStatement = function(statement)
 		local out = ''
+
+		if statement.Tokens[1] and statement.Tokens[1].LeadingWhite then
+			for k, v in pairs(statement.Tokens[1].LeadingWhite) do
+				if v.Type == "Comment" and v.CommentType == "Shebang" then
+					out = out..v.Data
+				end
+			end
+		end
+
 		if statement.AstType == 'AssignmentStatement' then
 			for i = 1, #statement.Lhs do
 				out = out..formatExpr(statement.Lhs[i])
